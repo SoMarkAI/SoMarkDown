@@ -1,0 +1,75 @@
+.somarkdown-container {
+    p.img-frame, figure.img-frame {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        // Frame Constraints
+        min-width: 80%;
+        max-width: 100%;
+        width: fit-content;
+        margin: 2.5em auto;
+        padding: 1.5em;
+        
+        // Appearance
+        border: 1px solid var(--img-frame-border-color); /* Thinner border, neutral color */
+        border-radius: 6px; /* Rounded corners */
+        position: relative;
+        box-sizing: border-box;
+        
+        // Text Color
+        color: var(--img-frame-color);
+
+        // Label "图片理解"
+        &::before {
+            content: "图片理解";
+            position: absolute;
+            top: -0.9em; 
+            left: 2em;
+            
+            background-color: var(--img-frame-label-bg);
+            color: var(--img-frame-color);
+            padding: 0.2em 0.8em;
+            border-radius: 4px;
+            
+            font-size: 0.9em;
+            font-weight: normal; /* Removed bold */
+            line-height: 1.4;
+            white-space: nowrap;
+            z-index: 1; /* Ensure it's above border */
+        }
+
+        // Content (Alt Text)
+        &::after {
+            content: attr(data-alt);
+            display: block;
+            width: 100%;
+            margin-bottom: 1em;
+            
+            // Layout
+            order: 1;
+            
+            // Text styling
+            text-align: left;
+            font-size: 1em;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        // Image
+        img {
+            order: 2;
+            margin: 0;
+        }
+        
+        // Handling figcaption if it exists (for figure.img-frame)
+        // Usually we want to hide original caption if it's redundant, or display it?
+        // User didn't specify. Assuming we just let it be, but it might mess up flex order.
+        // figcaption is usually at the bottom.
+        figcaption {
+            order: 3;
+            width: 100%;
+            margin-top: 0.5em;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+/* Variables should be defined in _variables.scss */
+@use 'variables' as *;
+
+/* Default Theme */
+:root {
+    --text-color: #{$text-color-light};
+    --bg-color: #{$bg-color-light};
+    --table-border-color: #{$table-border-color-light};
+    --caption-color: #{$caption-color-light};
+    --caption-font-size: 0.9em;
+    --img-width: 30%;
+    --img-hover-scale: 1.02;
+    --img-hover-shadow: 0 0 10px #{$img-shadow-color-light};
+    --img-hover-radius: #{$img-hover-radius};
+    --code-bg-color: #{$code-bg-light};
+    --pre-bg-color: #{$pre-bg-light};
+    --blockquote-text-color: #{$blockquote-color-light};
+    --blockquote-border-color: #{$blockquote-border-light};
+    --code-font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --h1-border-color: #{$h1-border-color-light};
+    --h2-border-color: #{$h2-border-color-light};
+    --h6-color: #{$caption-color-light};
+    --list-marker-color: #{$list-marker-color};
+    --toc-marker-color: #{$toc-marker-color};
+    --toc-marker-glow: #{$toc-marker-glow};
+    --toc-text-color: #{$toc-text-color};
+    --link-color: #{$link-color};
+    --code-tag-bg: #{$code-tag-bg-light};
+    --code-tag-text-color: #{$code-tag-text-color};
+    --somarkdown-smiles-theme: light;
+    --img-frame-color: #{$img-frame-color};
+    --img-frame-border-color: #{$table-border-color-light};
+    --img-frame-label-bg: #{$img-frame-label-bg-light};
+}
+
+.somarkdown-container {
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    --somarkdown-smiles-color-text: var(--text-color);
+}

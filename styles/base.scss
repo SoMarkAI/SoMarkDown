@@ -1,0 +1,106 @@
+.somarkdown-container {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.6;
+    word-wrap: break-word;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--text-color);
+    }
+
+    h1 {
+        font-size: 2em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--h1-border-color);
+    }
+
+    h2 {
+        font-size: 1.5em;
+        padding-bottom: 0.3em;
+        border-bottom: 1px solid var(--h2-border-color);
+    }
+
+    h3 {
+        font-size: 1.25em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+
+    h5 {
+        font-size: 0.875em;
+    }
+
+    h6 {
+        font-size: 0.85em;
+        color: var(--h6-color);
+    }
+
+    blockquote {
+        margin: 0;
+        padding: 0 1em;
+        color: var(--blockquote-text-color);
+        border-left: 0.25em solid var(--blockquote-border-color);
+    }
+
+    table {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        margin: 1rem auto;
+        overflow-x: auto;
+        border-collapse: collapse;
+
+        th, td {
+            border: 1px solid var(--table-border-color);
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        width: var(--img-width);
+        margin: 0 auto;
+        display: block;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-radius 0.3s ease;
+
+        &:hover {
+            transform: scale(var(--img-hover-scale));
+            box-shadow: var(--img-hover-shadow);
+            border-radius: var(--img-hover-radius);
+        }
+    }
+
+    // Inline image in paragraph (not standalone)
+    p img {
+        display: inline-block;
+        max-width: var(--img-width);
+        vertical-align: middle;
+        margin: 0 0.2em; // Add small spacing
+    }
+
+    ul, ol {
+        padding-left: 2em;
+        
+        li::marker {
+            color: var(--list-marker-color);
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--link-color);
+
+        &:visited {
+            color: var(--link-color);
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

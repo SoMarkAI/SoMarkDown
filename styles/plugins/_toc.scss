@@ -1,0 +1,36 @@
+.table-of-contents {
+    ul {
+        list-style: none;
+        padding-left: 1.5em;
+    }
+    li {
+        margin-bottom: 0.5em;
+        position: relative;
+        padding-left: 1.2em;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.4em;
+            width: 6px;
+            height: 6px;
+            border: 1px solid var(--toc-marker-color);
+            border-radius: 50%;
+            box-shadow: var(--toc-marker-glow);
+            background: transparent;
+        }
+    }
+    a {
+        text-decoration: none;
+        color: var(--toc-text-color);
+        
+        &:visited {
+            color: var(--toc-text-color);
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

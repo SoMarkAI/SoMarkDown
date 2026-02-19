@@ -1,0 +1,36 @@
+@use 'variables' as *;
+
+/* Dark Theme */
+.theme-dark {
+    --text-color: #{$text-color-dark};
+    --bg-color: #{$bg-color-dark};
+    --table-border-color: #{$table-border-color-dark};
+    --caption-color: #{$caption-color-dark};
+    --caption-font-size: 0.9em;
+    --img-width: 30%;
+    --img-hover-scale: 1.02;
+    --img-hover-shadow: 0 0 10px #{$img-shadow-color-dark};
+    --img-hover-radius: #{$img-hover-radius};
+    --code-bg-color: #{$code-bg-dark};
+    --pre-bg-color: #{$pre-bg-dark};
+    --blockquote-text-color: #{$blockquote-color-dark};
+    --blockquote-border-color: #{$blockquote-border-dark};
+    --code-font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    --h1-border-color: #{$h1-border-color-dark};
+    --h2-border-color: #{$h2-border-color-dark};
+    --h6-color: #{$caption-color-dark};
+    --list-marker-color: #{$list-marker-color};
+    --toc-marker-color: #{$toc-marker-color};
+    --toc-marker-glow: #{$toc-marker-glow};
+    --toc-text-color: #{$toc-text-color};
+    --link-color: #{$link-color};
+    --code-tag-bg: #{$code-tag-bg-dark};
+    --code-tag-text-color: #{$code-tag-text-color};
+    --somarkdown-smiles-theme: dark;
+    --img-frame-color: #{$img-frame-color};
+    --img-frame-border-color: #{$table-border-color-dark};
+    --img-frame-label-bg: #{$img-frame-label-bg-dark};
+    
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}

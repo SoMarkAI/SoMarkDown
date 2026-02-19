@@ -1,0 +1,19 @@
+# Exclude source maps
+*.map
+**/*.map
+
+# Exclude source code
+src/
+
+# Exclude other development files
+test/
+example/
+docs/
+.trae/
+.DS_Store
+coverage/
+rollup.config.js
+jest.config.js
+.babelrc
+.eslintrc.cjs
+.gitignore

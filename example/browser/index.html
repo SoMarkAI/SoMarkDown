@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoMarkDown Example</title>
+    <!-- Dependencies -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <link rel="stylesheet" href="../../dist/somarkdown.css" id="css-somarkdown">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-light.min.css" id="css-github-light" disabled>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.8.1/github-markdown-dark.min.css" id="css-github-dark" disabled>
+    <link rel="stylesheet" href="markdown-css/markdownhere.css" id="css-markdown-here" disabled>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1>SoMarkDown Demo</h1>
+        <div class="controls-group">
+            <div class="control-item">
+                <label for="theme-selector">Themes</label>
+                <select id="theme-selector">
+                    <option value="theme-light" selected>Light</option>
+                    <option value="theme-dark">Dark</option>
+                    <option value="theme-academic">Academic</option>
+                    <option value="github-light">GitHub Light</option>
+                    <option value="github-dark">GitHub Dark</option>
+                    <option value="markdown-here">Markdown Here</option>
+                </select>
+            </div>
+            <div class="control-item">
+                <label for="toc-level">TOC Max Level</label>
+                <input type="number" id="toc-level" min="1" max="6" value="3">
+            </div>
+            <div class="control-item">
+                <label for="smiles-color">Color Chemistry</label>
+                <input type="checkbox" id="smiles-color" checked>
+            </div>
+            <div class="control-item">
+                <label for="img-frame-check">Image Understanding</label>
+                <input type="checkbox" id="img-frame-check" checked>
+            </div>
+            <div class="control-item">
+                <label for="line-numbers-check">Line Numbers</label>
+                <input type="checkbox" id="line-numbers-check" checked>
+            </div>
+            <div class="control-item">
+                <label for="line-numbers-nested-check">Nested Mapping</label>
+                <input type="checkbox" id="line-numbers-nested-check" checked>
+            </div>
+        </div>
+    </header>
+
+    <div id="main-container">
+        <div class="pane">
+            <div class="pane-header">Markdown Input</div>
+            <textarea id="editor"></textarea>
+        </div>
+        <div class="pane">
+            <div class="pane-header">Preview</div>
+            <div id="preview" class="somarkdown-container markdown-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/smiles-drawer@2.0.1/dist/smiles-drawer.min.js"></script> -->
+    <script src="../../dist/somarkdown.umd.js"></script>
+    <script src="../example_data.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

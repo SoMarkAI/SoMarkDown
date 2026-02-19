@@ -1,0 +1,54 @@
+{
+  "name": "somarkdown",
+  "version": "1.0.0",
+  "description": "A Markdown parsing library with support for math formulas, SMILES, code highlighting, and more components.",
+  "type": "module",
+  "main": "dist/somarkdown.js",
+  "module": "src/index.js",
+  "browser": {
+    "./src/utils/dom.js": "./src/utils/dom.browser.js"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint src"
+  },
+  "keywords": [
+    "markdown",
+    "markdown-it",
+    "katex",
+    "smiles",
+    "highlight"
+  ],
+  "author": "SoMarkAI",
+  "license": "MIT",
+  "homepage": "https://github.com/SoMarkAI/SoMarkDown",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SoMarkAI/SoMarkDown.git"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0",
+    "katex": "^0.16.9",
+    "linkedom": "^0.16.11",
+    "markdown-it": "^14.0.0",
+    "markdown-it-mark": "^4.0.0",
+    "markdown-it-sub": "^2.0.0",
+    "markdown-it-sup": "^2.0.0",
+    "smiles-drawer": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "postcss": "^8.5.3",
+    "rollup": "^4.9.6",
+    "rollup-plugin-postcss": "^4.0.2",
+    "sass": "^1.70.0"
+  }
+}

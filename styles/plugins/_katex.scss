@@ -1,0 +1,7 @@
+/* Katex styles are imported via CDN or standard css in the example, 
+   but we should provide overrides or base structure if needed */
+.katex-block {
+    overflow-x: auto;
+    overflow-y: hidden;
+    text-align: center;
+}

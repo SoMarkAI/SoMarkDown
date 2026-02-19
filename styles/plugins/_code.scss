@@ -1,0 +1,117 @@
+$code-languages: (
+    "js": "js",
+    "javascript": "js",
+    "ts": "ts",
+    "typescript": "ts",
+    "py": "py",
+    "python": "py",
+    "rb": "rb",
+    "ruby": "rb",
+    "java": "java",
+    "c": "c",
+    "cpp": "cpp",
+    "c\\+\\+": "cpp",
+    "cs": "c#",
+    "csharp": "c#",
+    "c\\#": "c#",
+    "go": "go",
+    "golang": "go",
+    "rust": "rust",
+    "rs": "rust",
+    "html": "html",
+    "css": "css",
+    "scss": "scss",
+    "sass": "sass",
+    "less": "less",
+    "json": "json",
+    "yaml": "yaml",
+    "yml": "yaml",
+    "xml": "xml",
+    "sql": "sql",
+    "bash": "bash",
+    "sh": "sh",
+    "shell": "shell",
+    "docker": "docker",
+    "dockerfile": "docker",
+    "tex": "tex",
+    "latex": "latex",
+    "md": "md",
+    "markdown": "md",
+    "diff": "diff",
+    "makefile": "make"
+);
+
+.somarkdown-container {
+    code, kbd, pre {
+        font-family: var(--code-font-family);
+        font-size: 1em;
+    }
+
+    code {
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: var(--code-bg-color);
+        border-radius: 6px;
+    }
+
+    pre {
+        margin-top: 0;
+        margin-bottom: 16px;
+        word-wrap: normal;
+        padding: 16px;
+        background-color: var(--pre-bg-color);
+        border-radius: 6px;
+        font-size: 85%;
+        line-height: 1.45;
+        overflow-x: auto;
+        position: relative;
+        
+        code {
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+            word-break: normal;
+            white-space: pre;
+            background: transparent;
+            border: 0;
+        }
+    }
+
+    pre code.hljs {
+        display: block;
+        overflow-x: auto;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+        font-size: 100%;
+        line-height: inherit;
+    }
+
+    /* Language Tag Base Style */
+    %language-tag-base {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        left: auto;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-family: var(--code-font-family);
+        font-weight: 600;
+        line-height: 1;
+        color: var(--code-tag-text-color);
+        background-color: var(--code-tag-bg);
+        border-radius: 6px;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    /* Language Tag Content Mapping */
+    @each $key, $val in $code-languages {
+        pre code.language-#{$key}::before {
+            @extend %language-tag-base;
+            content: "#{$val}";
+            text-transform: uppercase;
+        }
+    }
+}
