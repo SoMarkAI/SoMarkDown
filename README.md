@@ -1,7 +1,7 @@
 # SoMarkDown
 
-<!-- [![NPM version](https://img.shields.io/npm/v/somarkdown.svg?style=flat)](https://www.npmjs.org/package/somarkdown)
-[![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE) -->
+[![NPM version](https://img.shields.io/npm/v/somarkdown.svg?style=flat)](https://www.npmjs.org/package/somarkdown)
+[![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE)
 
 SoMarkDown is a Markdown superset built upon [markdown-it](https://github.com/markdown-it/markdown-it), providing enhanced support for professional rendering capabilities including mathematical formulas, chemical structures (SMILES), code syntax highlighting, and more.
 

@@ -1,7 +1,7 @@
 # SoMarkDown
 
-<!-- [![NPM version](https://img.shields.io/npm/v/somarkdown.svg?style=flat)](https://www.npmjs.org/package/somarkdown)
-[![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE) -->
+[![NPM version](https://img.shields.io/npm/v/somarkdown.svg?style=flat)](https://www.npmjs.org/package/somarkdown)
+[![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE)
 
 SoMarkDown是Markdown的超集，基于[markdown-it](https://github.com/markdown-it/markdown-it)开发，添加了对专业渲染方案的支持，如数学公式、化学结构式（SMILES）、代码语法高亮等。
 
