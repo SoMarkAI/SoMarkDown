@@ -47,6 +47,12 @@
         border-left: 0.25em solid var(--blockquote-border-color);
     }
 
+    hr {
+        border: none;
+        height: 1px;
+        background-color: var(--hr-bg-color);
+    }
+
     table {
         display: block;
         width: max-content;
