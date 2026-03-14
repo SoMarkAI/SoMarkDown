@@ -16,29 +16,10 @@ function isValidInlineDelim(state, pos) {
         return { can_open: false, can_close: false };
     }
 
-    let canOpen = false;
-    let canClose = false;
-    if (prevChar !== '$' && prevChar !== '\\' && (
-        prevChar === undefined || isWhitespace(prevChar) || !isWordCharacterOrNumber(prevChar)
-    )) {
-        canOpen = true;
-    }
-
-    if (nextChar !== '$' && (
-        nextChar == undefined || isWhitespace(nextChar) || !isWordCharacterOrNumber(nextChar))
-    ) {
-        canClose = true;
-    }
+    const canOpen = prevChar !== '$' && prevChar !== '\\';
+    const canClose = nextChar !== '$';
 
     return { can_open: canOpen, can_close: canClose };
-}
-
-function isWhitespace(char) {
-    return /^\s$/u.test(char);
-}
-
-function isWordCharacterOrNumber(char) {
-    return /^[\w\d]$/u.test(char);
 }
 
 function isValidBlockDelim(state, pos) {
