@@ -6,7 +6,8 @@
   "main": "dist/somarkdown.js",
   "module": "src/index.js",
   "browser": {
-    "./src/utils/dom.js": "./src/utils/dom.browser.js"
+    "./src/utils/dom.js": "./src/utils/dom.browser.js",
+    "./src/plugins/html-table/index.js": "./src/plugins/html-table/index.browser.js"
   },
   "scripts": {
     "build": "rollup -c",

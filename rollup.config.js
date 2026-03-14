@@ -3,6 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
 import postcss from 'rollup-plugin-postcss';
+import path from 'node:path';
 
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY' && /node_modules/.test(warning.message || '')) return;
@@ -36,6 +37,21 @@ const postcssIgnore = postcss({
   extensions: ['.css', '.scss'],
   use: sassUse,
 });
+
+const browserCompatPlugin = {
+  name: 'browser-compat-replacements',
+  resolveId(source, importer) {
+    if (!importer) return null;
+    const normalizedImporter = importer.replace(/\\/g, '/');
+    if (normalizedImporter.endsWith('/src/core/somarkdown.js') && source === '../utils/dom.js') {
+      return path.resolve('src/utils/dom.browser.js');
+    }
+    if (normalizedImporter.endsWith('/src/plugins/index.js') && source === './html-table/index.js') {
+      return path.resolve('src/plugins/html-table/index.browser.js');
+    }
+    return null;
+  }
+};
 
 export default [
   // ESM build (Node/bundlers)
@@ -72,6 +88,7 @@ export default [
     },
     plugins: [
       resolvePlugin,
+      browserCompatPlugin,
       commonjs(),
       postcssIgnore,
       babel({ babelHelpers: 'bundled' }),
@@ -95,6 +112,7 @@ export default [
     },
     plugins: [
       resolvePlugin,
+      browserCompatPlugin,
       commonjs(),
       postcssIgnore,
       babel({ babelHelpers: 'bundled' }),
