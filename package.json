@@ -1,6 +1,6 @@
 {
   "name": "somarkdown",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A Markdown parsing library with support for math formulas, SMILES, code highlighting, and more components.",
   "type": "module",
   "main": "dist/somarkdown.js",
