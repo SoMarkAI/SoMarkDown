@@ -1,7 +1,18 @@
-# SoMarkDown
+<div style="text-align: center">
+<h1>SoMarkDown</h1>
+
+English ｜ [中文](./README_CN.md)
 
 [![NPM version](https://img.shields.io/npm/v/somarkdown.svg?style=flat)](https://www.npmjs.org/package/somarkdown)
 [![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE)
+<a href="https://github.com/SoMarkAI/SoMarkDown/pulls"><img src="https://img.shields.io/badge/PR-welcome-55EB99.svg"></a>
+
+Quick Try: https://somark.tech/smd/
+
+![SoMarkDown Viewer Preview](docs/assets/screenshot.shadow.png)
+<span style="font-size: 12px; color: gray;">This is [SoMarkDownViewer](https://github.com/SoMarkAI/SoMarkDownViewer) screenshot</span>
+
+</div>
 
 SoMarkDown is a Markdown superset built upon [markdown-it](https://github.com/markdown-it/markdown-it), providing enhanced support for professional rendering capabilities including mathematical formulas, chemical structures (SMILES), code syntax highlighting, and more.
 
@@ -21,6 +32,8 @@ SoMarkDown was established with the dual objective of delivering a powerful and 
 - **📑 Table of Contents Generation**: Automatic generation of table of contents (TOC).
 - **🖼️ Image Understanding**: Support for image comprehension and display.
 - **🏷️ Caption Support**: Support for figure and table caption expressions.
+
+Strictly speaking, SoMarkDown is a compiler that compiles syntax-compliant strings into HTML. To handle display and visual editing, we have also developed the [SoMarkDownViewer](https://github.com/SoMarkAI/SoMarkDownViewer) editor to handle these tasks. We also provide the Gradio plugin [gradio-somarkdown](https://github.com/SoMarkAI/gradio_somarkdown), which can replace the Markdown component in Gradio.
 
 ## Installation
 
@@ -139,3 +152,6 @@ Renders Markdown source code to HTML string.
 ## License
 
 MIT
+
+## WeChat Group
+<img src="./docs/assets/wechat.png" width="100">
