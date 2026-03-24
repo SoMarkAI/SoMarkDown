@@ -1,4 +1,4 @@
-<div style="text-align: center">
+<div align="center">
 <h1>SoMarkDown</h1>
 
 [English](./README.md) ｜ 中文
