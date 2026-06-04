@@ -7,7 +7,7 @@ English ｜ [中文](./README_CN.md)
 [![GitHub](https://img.shields.io/github/license/SoMarkAI/SoMarkDown)](https://github.com/SoMarkAI/SoMarkDown/blob/master/LICENSE)
 <a href="https://github.com/SoMarkAI/SoMarkDown/pulls"><img src="https://img.shields.io/badge/PR-welcome-55EB99.svg"></a>
 
-Quick Try: https://somark.tech/smd/
+Quick Try: https://somark.ai/smd/
 
 ![SoMarkDown Viewer Preview](docs/assets/screenshot.shadow.png)
 <span style="font-size: 12px; color: gray;">This is [SoMarkDownViewer](https://github.com/SoMarkAI/SoMarkDownViewer) screenshot</span>
