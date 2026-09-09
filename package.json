@@ -51,5 +51,11 @@
     "rollup": "^4.9.6",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.70.0"
+  },
+  "overrides": {
+    "linkify-it": "5.0.2",
+    "markdown-it": {
+      "linkify-it": "5.0.2"
+    }
   }
 }
