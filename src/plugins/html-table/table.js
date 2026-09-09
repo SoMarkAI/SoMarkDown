@@ -1,3 +1,5 @@
+import protectTableMath from './protect-math.js';
+
 const createHtmlTablePlugin = (parseTable) => (md) => {
     md.block.ruler.before('html_block', 'html_table', (state, startLine, endLine, silent) => {
         const start = state.bMarks[startLine] + state.tShift[startLine];
@@ -33,7 +35,8 @@ const createHtmlTablePlugin = (parseTable) => (md) => {
             return true;
         }
 
-        const table = parseTable(content);
+        const protectedMath = protectTableMath(content, state.md.utils.unescapeAll);
+        const table = parseTable(protectedMath.html);
         if (!table) {
             return false;
         }
@@ -63,7 +66,7 @@ const createHtmlTablePlugin = (parseTable) => (md) => {
                         cellTokenOpen.attrs.push([attr.name, attr.value]);
                     });
 
-                    const cellContent = cell.innerHTML;
+                    const cellContent = protectedMath.restore(cell.innerHTML);
                     const cellTokens = state.md.parse(cellContent, state.env);
 
                     cellTokens.forEach(t => {

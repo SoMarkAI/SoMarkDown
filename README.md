@@ -26,7 +26,7 @@ SoMarkDown was established with the dual objective of delivering a powerful and 
 - **Universal Compatibility**: Supports both browser and Node.js server-side rendering.
 
 **✨ Specialized Components:**
-- **📐 Mathematical Formulas**: Integrated [KaTeX](https://katex.org/) support for LaTeX mathematical expressions, including `mhchem` chemical equation extensions.
+- **📐 Mathematical Formulas**: Integrated [KaTeX](https://katex.org/) support for LaTeX mathematical expressions, including `mhchem` chemical equation extensions. HTML table cells preserve the original LaTeX in `$...$` and `$$...$$`, including `<`, `>` and `&`, alongside embedded HTML. Inline formulas also work inside tags such as `<span>` and `<strong>`.
 - **🧪 Chemical Structures**: Integrated [SmilesDrawer](https://github.com/reymond-group/smilesDrawer) for rendering SMILES strings. Innovatively supports syntax merging between LaTeX and SMILES, significantly expanding chemical structure expression capabilities.
 - **🎨 Code Syntax Highlighting**: Automatic detection and highlighting of code blocks through [highlight.js](https://highlightjs.org/).
 - **📑 Table of Contents Generation**: Automatic generation of table of contents (TOC).

@@ -26,7 +26,7 @@ SoMarkDown 的创立目标是为了给专业用户提供一个强大而灵活的
 - **通用性**: 支持浏览器和 Node 服务端渲染。
 
 **✨ 特色组件：**
-- **📐 数学公式**: 集成 [KaTeX](https://katex.org/) 支持 LaTeX 数学公式，包含 `mhchem` 化学方程式扩展。
+- **📐 数学公式**: 集成 [KaTeX](https://katex.org/) 支持 LaTeX 数学公式，包含 `mhchem` 化学方程式扩展。HTML 表格单元格保留 `$...$` 和 `$$...$$` 中的 LaTeX 原文（包括 `<`、`>`、`&`），并保留内嵌 HTML；行内公式也支持放在 `<span>`、`<strong>` 等标签内部。
 - **🧪 化学结构**: 集成 [SmilesDrawer](https://github.com/reymond-group/smilesDrawer) 渲染 SMILES 字符串。并创新支持 Latex 和 SMILES 的语法合并，极大扩展了化学结构式的表达能力。
 - **🎨 代码高亮**: 通过 [highlight.js](https://highlightjs.org/) 自动检测并高亮代码块。
 - **📑 目录生成**: 自动生成目录 (TOC)。

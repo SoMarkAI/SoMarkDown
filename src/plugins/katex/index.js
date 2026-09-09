@@ -40,16 +40,43 @@ function isValidBlockDelim(state, pos) {
     return { can_open: false, can_close: false };
 }
 
+function isInsideLiteralHtml(tokens) {
+    const literalTags = new Set(['code', 'pre', 'kbd', 'samp', 'script', 'style', 'textarea']);
+    const openTags = [];
+
+    for (const token of tokens) {
+        if (token.type !== 'html_inline') {
+            continue;
+        }
+
+        const match = token.content.match(/^<(\/?)([a-z][\w-]*)\b/i);
+        if (!match || !literalTags.has(match[2].toLowerCase())) {
+            continue;
+        }
+
+        const tagName = match[2].toLowerCase();
+        if (match[1]) {
+            const openingIndex = openTags.lastIndexOf(tagName);
+            if (openingIndex !== -1) {
+                openTags.length = openingIndex;
+            }
+        } else if (!/\/\s*>$/.test(token.content)) {
+            openTags.push(tagName);
+        }
+    }
+
+    return openTags.length > 0;
+}
+
 function inlineMath(state, silent) {
     if (state.src[state.pos] !== "$") {
         return false;
     }
 
-    const lastToken = state.tokens.at(-1);
-    if (lastToken?.type === 'html_inline') {
-        if (/^<\w+.+[^/]>$/.test(lastToken.content)) {
-            return false;
-        }
+    // HTML tags and attributes have already been consumed by markdown-it.
+    // Only literal elements suppress math in their text content.
+    if (isInsideLiteralHtml(state.tokens)) {
+        return false;
     }
 
     let res = isValidInlineDelim(state, state.pos);
