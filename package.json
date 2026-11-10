@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "build:site": "rollup -c --environment SITE_BUILD:true && node scripts/package-site.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "lint": "eslint src"
   },

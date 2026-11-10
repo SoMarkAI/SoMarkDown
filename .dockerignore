@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+site
+coverage
+.vscode
+.trae
+.env
+.env.*

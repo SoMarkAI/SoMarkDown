@@ -59,6 +59,49 @@ npm install
 npm run build
 ```
 
+### 发布浏览器示例
+
+不要把源码工作树、`node_modules` 或含开发文件的 `dist` 直接作为网站根目录。
+使用独立的发布产物：
+
+```bash
+npm ci
+npm run build:site
+tar -C site -czf somarkdown-site.tar.gz .
+docker build -f deploy/Dockerfile -t somarkdown-site .
+docker run --rm -p 127.0.0.1:8001:8001 somarkdown-site
+```
+
+访问 `http://127.0.0.1:8001/` 会跳转到 `/example/browser/index.html`。
+`site/` 仅包含浏览器包、生成的 CSS 和示例必需的 HTML、JS、主题及数据；
+不包含 Git 元数据、源码模块、开发配置、包清单或 source map。
+每次构建重建产物目录，缺少必需资源会使构建失败。普通 `npm run build`
+仍保留供本地开发使用的 source map。
+
+多阶段镜像只把 `site/` 复制到 Nginx 的 `/usr/share/nginx/html`，
+不要用源码目录覆盖挂载此路径。已有 Nginx 部署应将压缩包解压到
+**源码工作树之外的全新空发布目录**，将 `deploy/nginx.conf` 的 `root`
+指向该目录，保留跳转及 `try_files` 行为；不要覆盖合并到曾发布源码的目录。
+切换前检查页面和所有本地资源。示例原有的 CDN 样式、字体和示例图片仍需联网。
+例如由运维审核后执行（这里不自动执行现场迁移）：
+
+```bash
+release=/srv/somarkdown/releases/$(date -u +%Y%m%dT%H%M%SZ)
+mkdir -p "$release"
+tar -xzf somarkdown-site.tar.gz -C "$release"
+```
+
+将现有站点的 Nginx `root` 改为该 `$release` 的绝对路径，保留现有监听
+及根路径跳转，`nginx -t` 通过后再受控 reload。产物同时保留
+`/dist/somarkdown.umd.js` 与压缩包，兼容旧示例 HTML 的脚本引用路径；
+从旧版本迁移仍须验收渲染和主题控件，不能据此宣称新旧库版本完全等价。
+
+
+`npm test -- --runInBand` 包含产物边界回归；构建后检查浏览器 JS、示例数据、
+`/dist/somarkdown.umd.min.js` 及 `/dist/somarkdown.css` 为 200，
+`/.git/config`、`/package.json`、`/src/core/config.js`
+及 `/dist/somarkdown.umd.min.js.map` 为 404。
+
 ## 使用方法
 
 ### 基本用法

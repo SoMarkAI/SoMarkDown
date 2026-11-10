@@ -5,6 +5,8 @@ import terser from '@rollup/plugin-terser';
 import postcss from 'rollup-plugin-postcss';
 import path from 'node:path';
 
+const sourceMap = process.env.SITE_BUILD !== 'true';
+
 const onwarn = (warning, warn) => {
   if (warning.code === 'CIRCULAR_DEPENDENCY' && /node_modules/.test(warning.message || '')) return;
   warn(warning);
@@ -24,7 +26,7 @@ const sassUse = {
 const postcssExtract = postcss({
   extract: 'somarkdown.css',
   minimize: false,
-  sourceMap: true,
+  sourceMap,
   extensions: ['.css', '.scss'],
   use: sassUse,
 });
@@ -61,7 +63,7 @@ export default [
     output: {
       file: 'dist/somarkdown.js',
       format: 'es',
-      sourcemap: true
+      sourcemap: sourceMap
     },
     plugins: [
       resolvePlugin,
@@ -78,7 +80,7 @@ export default [
       file: 'dist/somarkdown.umd.js',
       format: 'umd',
       name: 'SoMarkDown',
-      sourcemap: true,
+      sourcemap: sourceMap,
       globals: {
         'markdown-it': 'markdownit',
         'katex': 'katex',
@@ -102,7 +104,7 @@ export default [
       file: 'dist/somarkdown.umd.min.js',
       format: 'umd',
       name: 'SoMarkDown',
-      sourcemap: true,
+      sourcemap: sourceMap,
       globals: {
         'markdown-it': 'markdownit',
         'katex': 'katex',
