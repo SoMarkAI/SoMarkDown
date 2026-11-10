@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { chmod, mkdtemp, mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { packageSite, siteFiles } from '../../scripts/package-site.js';
@@ -11,6 +11,7 @@ beforeEach(async () => {
     'example/browser/development.js', 'site/stale-secret']) {
     await mkdir(dirname(join(root, file)), { recursive: true });
     await writeFile(join(root, file), file);
+    await chmod(join(root, file), 0o600);
   }
 });
 afterEach(async () => { await rm(root, { recursive: true, force: true }); });
@@ -30,6 +31,10 @@ test('publishes exactly the required browser assets, with no stale or developmen
   expect(await files(join(root, 'site'))).toEqual([...siteFiles].sort());
   for (const file of siteFiles) {
     expect(await readFile(join(root, 'site', file), 'utf8')).toBe(file);
+    expect((await stat(join(root, 'site', file))).mode & 0o777).toBe(0o644);
+  }
+  for (const directory of ['', 'dist', 'example', 'example/browser', 'example/browser/markdown-css']) {
+    expect((await stat(join(root, 'site', directory))).mode & 0o777).toBe(0o755);
   }
   // Packaging a second release must remove files no longer in the manifest.
   await writeFile(join(root, 'site', 'obsolete.js'), 'old release');
