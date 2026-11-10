@@ -59,6 +59,66 @@ npm install
 npm run build
 ```
 
+### Publish the browser demo
+
+Never serve the repository checkout, `node_modules`, or the library's development
+`dist` directory as a website. Build a dedicated, disposable artifact instead:
+
+```bash
+npm ci
+npm run build:site
+tar -C site -czf somarkdown-site.tar.gz .
+```
+
+`site/` contains the browser bundles, generated CSS, and the
+`example/browser` runtime files (including the theme stylesheet and example
+data). JavaScript used by the browser is intentionally retained. Source maps,
+Git metadata, source modules, package manifests, and development configuration
+are not published. Each build replaces the previous artifact, and missing
+required assets fail the build. `npm run build` still produces library builds
+with source maps for local development.
+
+For an isolated Nginx deployment:
+
+```bash
+docker build -f deploy/Dockerfile -t somarkdown-site .
+docker run --rm -p 127.0.0.1:8001:8001 somarkdown-site
+```
+
+Open `http://127.0.0.1:8001/`; it redirects to
+`/example/browser/index.html`. The final image copies only `site/` into
+`/usr/share/nginx/html`, not the build workspace. Do not bind-mount the checkout
+over that directory. For an existing Nginx installation, extract the artifact
+into a new, empty release directory **outside the checkout** and set the
+`root` in `deploy/nginx.conf` to that directory; retain the redirect and
+`try_files` behavior. Switch releases only after checking the page and all local
+assets. Do not merge the artifact into a former source-root publication.
+The demo's existing external CDN styles/fonts and example image still require
+network access.
+
+For example, when migrating an existing source-root deployment (operator-run;
+do not run these commands on a live host without a release review):
+
+```bash
+release=/srv/somarkdown/releases/$(date -u +%Y%m%dT%H%M%SZ)
+mkdir -p "$release"
+tar -xzf somarkdown-site.tar.gz -C "$release"
+```
+
+Set the existing site's Nginx `root` to that exact `$release` path, preserving
+its listener and root redirect, then run `nginx -t` before a controlled reload.
+The artifact retains `/dist/somarkdown.umd.js` as well as the minified bundle,
+so older browser demo HTML can keep its existing script URL. The library
+version still changes when migrating from older releases: validate rendering
+and theme controls before switching; copying this release does not certify
+equivalence with an older deployed version.
+
+Run packaging regressions with `npm test -- --runInBand`; after building, verify
+that `/example/browser/index.js`, `/example/example_data.js`,
+`/dist/somarkdown.umd.min.js`, and `/dist/somarkdown.css` return 200, while
+`/.git/config`, `/package.json`, `/src/core/config.js`, and
+`/dist/somarkdown.umd.min.js.map` return 404.
+
 ## Usage
 
 ### Basic Usage
